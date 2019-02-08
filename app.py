@@ -61,6 +61,13 @@ def create_movie():
     db.session.commit()
     return render_template("create.html")
     # return redirect("/movies/{{movie.id}}")
-    
+
+
+# 영화 정보 조회 페이지 생성
+@app.route("/movies/<int:id>")
+def read_movie(id):
+    movie = Movie.query.get(id)
+    return render_template("show.html", movie=movie)
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="8080", debug=True)

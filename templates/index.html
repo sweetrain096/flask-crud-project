@@ -11,7 +11,7 @@
     
     <ul>
         {% for movie in movies %}
-            <p><a href="/movies/read/{{movie.id}}">{{movie.title}} ({{movie.title_en}}) : {{movie.score}}</a></p>
+            <p><a href="/movies/{{movie.id}}">{{movie.title}} ({{movie.title_en}}) : {{movie.score}}</a></p>
             <hr>
         {% endfor %}
     </ul>
