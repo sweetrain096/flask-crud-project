@@ -1,5 +1,5 @@
 import datetime
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
@@ -43,6 +43,24 @@ def index():
 @app.route("/movies/new")
 def new_movie():
     return render_template("new.html")
+    
+# movies/create 페이지 생성.
+@app.route("/movies/create", methods=["POST"])
+def create_movie():
+    movie = Movie()
+    movie.title = request.form.get("title")
+    movie.title_en = request.form.get("title_en")
+    movie.audience = request.form.get("audience")
+    movie.open_date = request.form.get("open_date")
+    movie.genre = request.form.get("genre")
+    movie.watch_grade = request.form.get("watch_grade")
+    movie.score = request.form.get("score")
+    movie.poster_url = request.form.get("poster_url")
+    movie.description = request.form.get("description")
+    db.session.add(movie)
+    db.session.commit()
+    return render_template("create.html")
+    # return redirect("/movies/{{movie.id}}")
     
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="8080", debug=True)
