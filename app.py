@@ -33,7 +33,10 @@ class Movie(db.Model):
 def main():
     return render_template("main.html")
 
-
+@app.route("/movies")
+def index():
+    movies = Movie.query.all()
+    return render_template("index.html", movies = movies)
     
     
 if __name__ == "__main__":
