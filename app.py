@@ -72,6 +72,12 @@ def create_movie():
 def read_movie(id):
     movie = Movie.query.get(id)
     return render_template("show.html", movie=movie)
+    
+# 영화 정보 수정 Form
+@app.route("/movies/<int:id>/edit")
+def edit_movie(id):
+    movie = Movie.query.get(id)
+    return render_template("edit.html", movie=movie)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="8080", debug=True)
