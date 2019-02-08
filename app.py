@@ -38,7 +38,11 @@ def main():
 def index():
     movies = Movie.query.all()
     return render_template("index.html", movies = movies)
-    
+
+# movies/new 페이지 생성. 사용자에게 영화 목록 추가 할 form 생성
+@app.route("/movies/new")
+def new_movie():
+    return render_template("new.html")
     
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="8080", debug=True)
