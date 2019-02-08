@@ -33,6 +33,7 @@ class Movie(db.Model):
 def main():
     return render_template("main.html")
 
+# movies 페이지 생성
 @app.route("/movies")
 def index():
     movies = Movie.query.all()
