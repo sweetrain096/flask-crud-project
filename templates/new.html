@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>영화 추가</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}영화 목록 추가{% endblock %}
+
+
+{% block body %}
     <form action="/movies/create", method="POST">
         영화명 : <input type="text" name="title"> <br>
         영화명(영문) : <input type="text" name="title_en"> <br>
@@ -19,5 +15,4 @@
         줄거리 : <input type="textarea" name="description"/> <br>
         <input type="submit" value="등록!">
     </form>
-</body>
-</html>
+{% endblock %}

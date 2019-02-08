@@ -63,8 +63,8 @@ def create_movie():
     movie.description = request.form.get("description")
     db.session.add(movie)
     db.session.commit()
-    return render_template("create.html")
-    # return redirect("/movies/{{movie.id}}")
+    # return render_template("create.html")
+    return redirect(f"/movies/{movie.id}")
 
 
 # 영화 정보 조회 페이지 생성
@@ -95,7 +95,8 @@ def update_movie(id):
     movie.description = request.form.get("description")
     db.session.commit()
     
-    return render_template("update.html")
+    return redirect(f"/movies/{movie.id}")
+    # return render_template("update.html")
 
 # 영화 정보 삭제
 @app.route("/movies/<int:id>/delete")
