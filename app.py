@@ -1,5 +1,5 @@
 import datetime
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
@@ -28,10 +28,10 @@ class Movie(db.Model):
 
 
 
-
+# 첫 메인 화면 생성
 @app.route("/")
-def index():
-    return "hi"
+def main():
+    return render_template("main.html")
     
     
     
