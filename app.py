@@ -79,5 +79,27 @@ def edit_movie(id):
     movie = Movie.query.get(id)
     return render_template("edit.html", movie=movie)
 
+# 영화 정보 업데이트
+@app.route("/movies/<int:id>/update", methods=["POST"])
+def update_movie(id):
+    movie = Movie.query.get(id)
+    
+    movie.title = request.form.get("title")
+    movie.title_en = request.form.get("title_en")
+    movie.audience = request.form.get("audience")
+    movie.open_date = request.form.get("open_date")
+    movie.genre = request.form.get("genre")
+    movie.watch_grade = request.form.get("watch_grade")
+    movie.score = request.form.get("score")
+    movie.poster_url = request.form.get("poster_url")
+    movie.description = request.form.get("description")
+    db.session.commit()
+    
+    return render_template("update.html")
+
+
+
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="8080", debug=True)
