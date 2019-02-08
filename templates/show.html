@@ -16,7 +16,10 @@
         <p>등급 : {{movie.watch_grade}}</p> <br>
         <p>평점 : {{movie.score}}</p> <br>
         <p>줄거리 : {{movie.description}}</p> <br>
-        
     </ul>
+    
+    <a href="/movies">목록</a>
+    <a href="/movies/{{movie.id}}/edit">수정</a>
+    <a href="/movies/{{movie.id}}/delete">삭제</a>
 </body>
 </html>

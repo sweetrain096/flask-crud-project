@@ -8,6 +8,10 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db_flask.sqlite3"
 app.config["SQLALCHEMY_TREACK_MODIFICATIONS"] = False
 
+# post 방식의 secret_key 설정
+app.secret_key = "qhshqhshqksksk"
+
+
 # sqlalchemy 및 migration 초기화
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
