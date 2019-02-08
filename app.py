@@ -97,7 +97,15 @@ def update_movie(id):
     
     return render_template("update.html")
 
-
+# 영화 정보 삭제
+@app.route("/movies/<int:id>/delete")
+def delete_movie(id):
+    movie = Movie.query.get(id)
+    db.session.delete(movie)
+    db.session.commit()
+    return redirect("/movies")
+    
+    
 
 
 
