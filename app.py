@@ -1,5 +1,4 @@
-import datetime
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
@@ -52,18 +51,37 @@ def new_movie():
 @app.route("/movies/create", methods=["POST"])
 def create_movie():
     movie = Movie()
-    movie.title = request.form.get("title")
-    movie.title_en = request.form.get("title_en")
-    movie.audience = request.form.get("audience")
-    movie.open_date = request.form.get("open_date")
-    movie.genre = request.form.get("genre")
-    movie.watch_grade = request.form.get("watch_grade")
-    movie.score = request.form.get("score")
-    movie.poster_url = request.form.get("poster_url")
-    movie.description = request.form.get("description")
+    movie = Movie(**request.form)
+    
+
+    # lists = dict(request.form)
+    
+    # for key, val in lists.items():
+    #     print(key, val)
+    #     movie.key = val
+    
+    # for key, val in lists.items():
+    #     print(movie.key)
+
+    # movie.title = request.form.get("title")
+    # movie.title_en = request.form.get("title_en")
+    # movie.audience = request.form.get("audience")
+    # movie.open_date = request.form.get("open_date")
+    # movie.genre = request.form.get("genre")
+    # movie.watch_grade = request.form.get("watch_grade")
+    # movie.score = request.form.get("score")
+    # movie.poster_url = request.form.get("poster_url")
+    # movie.description = request.form.get("description")
+    
+
+    
+    
+    
+    
     db.session.add(movie)
     db.session.commit()
-    # return render_template("create.html")
+    
+    flash(f"{movie.title}이/가 생성되었습니다.", "success")
     return redirect(f"/movies/{movie.id}")
 
 
@@ -83,6 +101,9 @@ def edit_movie(id):
 @app.route("/movies/<int:id>/update", methods=["POST"])
 def update_movie(id):
     movie = Movie.query.get(id)
+    # for key, value in request.form.items():
+    #     setattr(movie, key, value)
+    #     movie.__setattr__(key, value)
     
     movie.title = request.form.get("title")
     movie.title_en = request.form.get("title_en")
@@ -93,6 +114,8 @@ def update_movie(id):
     movie.score = request.form.get("score")
     movie.poster_url = request.form.get("poster_url")
     movie.description = request.form.get("description")
+    
+    
     db.session.commit()
     
     return redirect(f"/movies/{movie.id}")
@@ -104,6 +127,7 @@ def delete_movie(id):
     movie = Movie.query.get(id)
     db.session.delete(movie)
     db.session.commit()
+    flash(f"{movie.title}이/가 삭제되었습니다.", "danger")
     return redirect("/movies")
     
     

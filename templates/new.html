@@ -3,16 +3,64 @@
 
 
 {% block body %}
-    <form action="/movies/create", method="POST">
-        영화명 : <input type="text" name="title"> <br>
-        영화명(영문) : <input type="text" name="title_en"> <br>
-        관객수 : <input type="int" name="audience"> <br>
-        개봉일 : <input type="text" name="open_date"> <br>
-        장르 : <input type="text" name="genre"> <br>
-        등급 : <input type="text" name="watch_grade"> <br>
-        별점 : <input type="float" name="score"> <br>
-        영화 포스터 url : <input type="text" name="poster_url"> <br>
-        줄거리 : <input type="textarea" name="description"/> <br>
-        <input type="submit" value="등록!">
-    </form>
+    <div class="container">
+        <form action="/movies/create", method="POST">
+            <div class="form-group row">
+                <label for="input_title" class="col-sm-2 col-form-label">영화명</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="title" name="title">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="input_title_en" class="col-sm-2 col-form-label">영화명(영문)</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="title_en" name="title_en">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="input_title" class="col-sm-2 col-form-label">관객수</label>
+                <div class="col-sm-10">
+                    <input type="int" class="form-control" id="audience" name="audience">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="input_title_en" class="col-sm-2 col-form-label">개봉일</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" id="open_date" name="open_date">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="input_title" class="col-sm-2 col-form-label">장르</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="genre" name="genre">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="input_title_en" class="col-sm-2 col-form-label">등급</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="watch_grade" name="watch_grade">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Range">별점</label>
+                <input type="range" class="custom-range" min="0" max="5" step="0.5" id="score" name="score">
+            </div>
+            <div class="form-group row">
+                <label for="input_title" class="col-sm-2 col-form-label">영화 포스터 url</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="poster_url" name="poster_url">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="input_title_en" class="col-sm-2 col-form-label">줄거리</label>
+                <div class="col-sm-10">
+                    <input type="textarea" class="form-control" id="poster_url" name="description"/>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">등록!</button>
+        </form>
+    </div>
 {% endblock %}
+
+
